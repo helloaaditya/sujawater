@@ -30,6 +30,9 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
   },
+  verification: {
+    google: 'viIdgHY_FWf3xriwAW8J_ksTphhybf4yLLzIKYvVTiI',
+  },
   robots: { index: true, follow: true },
 };
 
