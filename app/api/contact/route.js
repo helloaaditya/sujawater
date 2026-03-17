@@ -29,9 +29,9 @@ export async function POST(request) {
     const smtpPass = process.env.SMTP_PASS;
 
     if (!smtpUser || !smtpPass) {
-      console.error('Contact API: SMTP_USER and SMTP_PASS must be set in .env');
+      console.error('Contact API: SMTP_USER or SMTP_PASS missing in env');
       return NextResponse.json(
-        { ok: false, message: 'Email is not configured. Please set SMTP credentials in .env' },
+        { ok: false, message: 'Email configuration is incomplete.' },
         { status: 503 }
       );
     }
@@ -46,7 +46,7 @@ export async function POST(request) {
       },
     });
 
-    const companyName = siteConfig?.fullName || siteConfig?.name;
+    const companyName = siteConfig?.fullName || siteConfig?.name || 'Suja Waterproofing';
     const subject = `Enquiry from ${name} (${email})`;
     const html = `
       <h2>New enquiry – from ${name} to ${companyName}</h2>
@@ -56,28 +56,56 @@ export async function POST(request) {
       <pre style="white-space: pre-wrap; font-family: inherit;">${message.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
       <hr />
       <p><strong>Reply to this email to respond directly to the customer.</strong></p>
-      <p><small>Sent via ${companyName} contact form → delivered to sujawps@gmail.com</small></p>
+      <p><small>Sent via ${companyName} contact form → delivered to ${toEmail}</small></p>
     `;
 
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || `"${companyName}" <${smtpUser}>`,
-      to: toEmail,
-      replyTo: `"${name}" <${email}>`,
-      subject,
-      text: `Enquiry from ${name} (${email}) to ${companyName}\n\nMobile: ${mobile}\n\nMessage:\n${message}\n\n--- Reply to this email to respond to the customer. ---`,
-      html,
-    });
+    // 1. Try to save to database first (so we don't lose the lead)
+    let dbSaved = false;
+    try {
+      const supabase = createServerClient();
+      if (supabase) {
+        const { error: sbError } = await supabase.from('leads').insert({ name, email, mobile, message });
+        if (sbError) {
+          console.error('Contact API: Supabase insert failed:', sbError);
+        } else {
+          dbSaved = true;
+        }
+      }
+    } catch (sbErr) {
+      console.error('Contact API: Supabase client error:', sbErr);
+    }
 
-    const supabase = createServerClient();
-    if (supabase) {
-      await supabase.from('leads').insert({ name, email, mobile, message });
+    // 2. Try to send email
+    try {
+      await transporter.sendMail({
+        from: process.env.SMTP_FROM || `"${companyName.replace(/[^\w\s]/g, '')}" <${smtpUser}>`,
+        to: toEmail,
+        replyTo: `"${name.replace(/[^\w\s]/g, '')}" <${email}>`,
+        subject,
+        text: `Enquiry from ${name} (${email}) to ${companyName}\n\nMobile: ${mobile}\n\nMessage:\n${message}\n\n--- Reply to this email to respond to the customer. ---`,
+        html,
+      });
+    } catch (mailErr) {
+      console.error('Contact API: Mail send failed:', mailErr);
+      
+      // If we saved to DB but mail failed, we still count it as a partial success
+      if (dbSaved) {
+        return NextResponse.json({ 
+          ok: true, 
+          message: 'Enquiry received. Our team will contact you soon.' 
+        });
+      }
+      
+      // If both failed, then it's a real error
+      throw new Error(`Email delivery failed: ${mailErr.message}`);
     }
 
     return NextResponse.json({ ok: true, message: 'Enquiry sent successfully.' });
   } catch (err) {
     console.error('Contact API error:', err);
+    const msg = err instanceof Error ? err.message : String(err);
     return NextResponse.json(
-      { ok: false, message: err.message || 'Failed to send email. Please try again or call us.' },
+      { ok: false, message: msg || 'Failed to send enquiry. Please try again or call us.' },
       { status: 500 }
     );
   }
