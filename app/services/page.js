@@ -7,7 +7,7 @@ import ServicesListWithSearch from '@/components/ServicesListWithSearch';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Waterproofing Services in Bangalore | Terrace, Bathroom, Basement',
+  title: 'Waterproofing Services in Bangalore',
   description:
     'Professional waterproofing services in Bangalore: terrace waterproofing, bathroom waterproofing, basement waterproofing, epoxy grouting, swimming pool, lift pit. Free site inspection.',
   keywords: 'waterproofing services Bangalore, terrace waterproofing, bathroom waterproofing, basement waterproofing, epoxy grouting Bangalore, swimming pool waterproofing',

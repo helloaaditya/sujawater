@@ -11,11 +11,11 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-geist-sans' });
 
 export const metadata = {
   title: {
-    default: 'SUJA WATERPROOFING SOLUTIONS & EPOXY FLOORING , P U SYSTEMS | Bangalore',
-    template: '%s | SUJA WATERPROOFING SOLUTIONS & EPOXY FLOORING , P U SYSTEMS',
+    default: 'Suja Waterproofing & Epoxy Flooring | Bangalore',
+    template: '%s | Suja Waterproofing',
   },
   description:
-    'SUJA WATERPROOFING SOLUTIONS & EPOXY FLOORING , P U SYSTEMS – Epoxy tiles grouting, terrace waterproofing, bathroom waterproofing, swimming pool, basement & lift pit waterproofing in Bangalore. Call 9945843699.',
+    'Suja Waterproofing Solutions – Epoxy tiles grouting, terrace waterproofing, bathroom waterproofing, swimming pool, basement & lift pit waterproofing in Bangalore. Call 9945843699.',
   keywords: [
     'waterproofing Bangalore',
     'terrace waterproofing',

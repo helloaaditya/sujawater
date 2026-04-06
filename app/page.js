@@ -13,7 +13,7 @@ import AnimatedSection, { AnimatedStagger, AnimatedItem } from '@/components/Ani
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Terrace, Bathroom & Basement Waterproofing Bangalore',
+  title: 'Terrace, Bathroom & Basement Waterproofing',
   description: 'Best waterproofing company in Bangalore. Terrace waterproofing, bathroom waterproofing, basement waterproofing, epoxy grouting. Free site inspection. Call 9945843699.',
   keywords: 'waterproofing Bangalore, terrace waterproofing, bathroom waterproofing, basement waterproofing, epoxy grouting, Suja Waterproofing',
 };
