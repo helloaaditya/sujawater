@@ -46,8 +46,8 @@ export async function generateMetadata({ params }) {
   const service = services.find((s) => s.slug === params.slug);
   if (!service) return { title: 'Service' };
   return {
-    title: `${service.title} in Bangalore`,
-    description: `${service.shortDesc} ${service.longDesc?.slice(0, 120) || ''} Free site inspection. Call ${siteConfig.phone}.`,
+    title: service.metaTitle || `${service.title} in Bangalore`,
+    description: service.metaDescription || `${service.shortDesc} ${service.longDesc?.slice(0, 120) || ''} Free site inspection. Call ${siteConfig.phone}.`,
     keywords: `${service.title}, waterproofing Bangalore, ${service.slug}`,
   };
 }
