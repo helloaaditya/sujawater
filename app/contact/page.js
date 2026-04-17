@@ -10,6 +10,9 @@ export async function generateMetadata() {
     title: 'Contact Us',
     description: `Contact ${siteConfig.fullName || siteConfig.name} for free site inspection and waterproofing quote in Bangalore. Call ${siteConfig.phoneFull}. Terrace, bathroom, basement waterproofing.`,
     keywords: 'contact Suja Waterproofing, waterproofing Bangalore contact, free site inspection Bangalore, waterproofing quote',
+    alternates: {
+      canonical: '/contact',
+    },
   };
 }
 

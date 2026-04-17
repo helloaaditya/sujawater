@@ -15,6 +15,9 @@ export async function generateMetadata() {
     title: 'About Us',
     description: `${siteConfig.fullName || siteConfig.name} is a leading provider of terrace, bathroom, basement and commercial waterproofing in Bangalore. 15+ years experience, free site inspection. Call 9945843699.`,
     keywords: 'about Suja Waterproofing, waterproofing company Bangalore, terrace waterproofing Bangalore, basement waterproofing',
+    alternates: {
+      canonical: '/about',
+    },
   };
 }
 

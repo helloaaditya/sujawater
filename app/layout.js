@@ -14,6 +14,10 @@ export const metadata = {
     default: 'Suja Waterproofing & Epoxy Flooring | Bangalore',
     template: '%s',
   },
+  metadataBase: new URL('https://sujawaterproofing.com'),
+  alternates: {
+    canonical: '/',
+  },
   description:
     'Suja Waterproofing Solutions – Epoxy tiles grouting, terrace waterproofing, bathroom waterproofing, swimming pool, basement & lift pit waterproofing in Bangalore. Call 9945843699.',
   keywords: [

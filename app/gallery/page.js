@@ -11,6 +11,9 @@ export async function generateMetadata() {
     title: 'Gallery',
     description: `Before & after waterproofing project gallery. Terrace, bathroom, basement, epoxy grouting and roof waterproofing projects in Bangalore by ${siteConfig.fullName || siteConfig.name}.`,
     keywords: 'waterproofing gallery Bangalore, terrace waterproofing projects, basement waterproofing before after, epoxy grouting Bangalore',
+    alternates: {
+      canonical: '/gallery',
+    },
   };
 }
 

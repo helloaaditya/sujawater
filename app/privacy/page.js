@@ -8,6 +8,9 @@ export async function generateMetadata() {
   return {
     title: 'Privacy Policy',
     description: `Privacy policy of ${siteConfig.fullName || siteConfig.name}, Bangalore. How we collect, use and protect your data when you contact us for waterproofing services.`,
+    alternates: {
+      canonical: '/privacy',
+    },
   };
 }
 

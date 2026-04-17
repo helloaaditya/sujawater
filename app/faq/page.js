@@ -8,6 +8,9 @@ export const metadata = {
   title: 'FAQ',
   description: 'Frequently asked questions about terrace waterproofing, bathroom waterproofing, basement waterproofing, epoxy grouting and our services in Bangalore. Free site inspection.',
   keywords: 'waterproofing FAQ Bangalore, terrace waterproofing cost, basement waterproofing questions, epoxy grouting Bangalore',
+  alternates: {
+    canonical: '/faq',
+  },
 };
 
 export default async function FaqPage() {

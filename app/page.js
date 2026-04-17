@@ -16,6 +16,9 @@ export const metadata = {
   title: 'Terrace, Bathroom & Basement Waterproofing',
   description: 'Best waterproofing company in Bangalore. Terrace waterproofing, bathroom waterproofing, basement waterproofing, epoxy grouting. Free site inspection. Call 9945843699.',
   keywords: 'waterproofing Bangalore, terrace waterproofing, bathroom waterproofing, basement waterproofing, epoxy grouting, Suja Waterproofing',
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default async function HomePage() {

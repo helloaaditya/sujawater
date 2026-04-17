@@ -8,6 +8,9 @@ export async function generateMetadata() {
   return {
     title: 'Terms and Conditions',
     description: `Terms and conditions for using ${siteConfig.fullName || siteConfig.name} website and services. Waterproofing services in Bangalore - terrace, bathroom, basement.`,
+    alternates: {
+      canonical: '/terms',
+    },
   };
 }
 

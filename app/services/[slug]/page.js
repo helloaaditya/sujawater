@@ -49,6 +49,9 @@ export async function generateMetadata({ params }) {
     title: service.metaTitle || service.title,
     description: service.metaDescription || service.shortDesc,
     keywords: `${service.title}, waterproofing Bangalore, ${service.slug}`,
+    alternates: {
+      canonical: `/services/${service.slug}`,
+    },
   };
 }
 

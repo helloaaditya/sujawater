@@ -8,6 +8,9 @@ export const metadata = {
   title: 'Testimonials & Reviews',
   description: 'What our clients say about us. Real reviews from Bangalore customers for terrace waterproofing, bathroom waterproofing, basement waterproofing.',
   keywords: 'Suja Waterproofing reviews, waterproofing testimonials Bangalore, terrace waterproofing reviews',
+  alternates: {
+    canonical: '/testimonials',
+  },
 };
 
 export default async function TestimonialsPage() {

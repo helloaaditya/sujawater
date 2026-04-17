@@ -11,6 +11,9 @@ export const metadata = {
   description:
     'Professional waterproofing services in Bangalore: terrace waterproofing, bathroom waterproofing, basement waterproofing, epoxy grouting, swimming pool, lift pit. Free site inspection.',
   keywords: 'waterproofing services Bangalore, terrace waterproofing, bathroom waterproofing, basement waterproofing, epoxy grouting Bangalore, swimming pool waterproofing',
+  alternates: {
+    canonical: '/services',
+  },
 };
 
 export default async function ServicesPage() {

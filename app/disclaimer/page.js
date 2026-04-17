@@ -8,6 +8,9 @@ export async function generateMetadata() {
   return {
     title: 'Disclaimer',
     description: `Disclaimer for ${siteConfig.fullName || siteConfig.name} website. Information about waterproofing services in Bangalore is for general use only.`,
+    alternates: {
+      canonical: '/disclaimer',
+    },
   };
 }
 
